@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taks Portal</title>
+    <link rel="web icon" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0044cc;
+            color: #fff;
+        }
+
+        .logo-icon {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .burger {
+            display: none;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #0044cc;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            padding: 14px 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #003399;
+            color: #fff;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            /* Allow content to grow and take available space */
+        }
+
+        .tugas {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .tugas img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 20px;
+            flex: 1 1 auto;
+        }
+
+        .tugas-content {
+            flex: 2 1 auto;
+        }
+
+        .tugas p,
+        .tugas b {
+            margin: 5px 0;
+        }
+
+        footer {
+            background-color: #0044cc;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .burger {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 10px;
+            }
+
+            .tugas {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tugas img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo-icon">
+            <b>Taks Portal</b>
+        </div>
+        <div class="burger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tu">Tugas-Tugas Terbaru</a></li>
+            <li><a href="#pro">Programer</a></li>
+        </ul>
+    </nav>
+    <br>
+    <b id="tu" style="text-align: center;">bagian tugas-tugas sekolah</b>
+    <div class="content">
+        <div class="tugas tugas-terbaru">
+            <img src="tugas 1.jpg" alt="Tugas terbaru tanggal 30/07/2024" width="80px" height="80px">
+            <div class="tugas-content">
+                <p>Nama pelajaran :</p>
+                <b>Seni Budaya</b>
+            </div>
+        </div>
+
+        <div class="tugas tugas-kemarin">
+            <img src="" alt="Tugas kemarin tanggal 29/07/2024">
+            <div class="tugas-content">
+                <p>Nama pelajaran :</p>
+                <b>PPKN</b>
+            </div>
+        </div>
+
+        <h1 id="about">About Me</h1>
+        <p>Tujuan saya membuat website ini adalah Website Taks Portal dirancang untuk menyediakan akses yang mudah dan
+            cepat
+            terhadap informasi penting terkait tugas-tugas sekolah</p>
+
+        <h1 id="pro">Bagian Programer</h1>
+        <p>Website ini diprogram oleh Veren yang sekarang ada di kelas 9A sekolah di SMP Angkasa.</p>
+    </div>
+
+    <footer>
+        <p>Hak Cipta © 2024 Taks Portal. Seluruh Hak Cipta Dilindungi.</p>
+        <div class="date-updated">
+            <p>Diupdate pada: <span id="current-date"></span></p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.burger').addEventListener('click', function () {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Function to format date as YYYY-MM-DD
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const year = date.getFullYear();
+            return `${year}-${month}-${day}`;
+        }
+
+        // Update the date in the footer
+        document.getElementById('current-date').textContent = formatDate(new Date());
+    </script>
+</body>
+
+</html>
